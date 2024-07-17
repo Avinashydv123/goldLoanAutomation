@@ -1,10 +1,7 @@
 const {test, execPath, expect} = require('@playwright/test');
+
 test('login the application and open the enquiry form', async({page}) =>{
 
-
-  test.describe.configure({
-    mode: "serial",
-  }),
       // Open the application by using browser
    await page.goto('https://goldloanwebapp-qa-windows.azurewebsites.net/login');
    await page.waitForTimeout(1000);
@@ -16,7 +13,7 @@ test('login the application and open the enquiry form', async({page}) =>{
  
  
    // Enter the valid password
-   await page.locator('//*[@id="mat-input-1"]').fill('Avinash!124421');
+   await page.locator('//*[@id="mat-input-1"]').fill('Avi@12345');
    await page.waitForTimeout(1000);
 
     // Tap the login button
@@ -44,7 +41,7 @@ test('login the application and open the enquiry form', async({page}) =>{
    await page.waitForTimeout(2000);
 
 
-  //click and open the valuation screen
+  //click and open the Enquiry screen
    await page.locator('//*[@id="menu-item-21"]').click();
    await page.waitForTimeout(2000);
 

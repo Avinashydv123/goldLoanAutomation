@@ -7,12 +7,12 @@ test('open the app and go for the valuation screen', async({page}) =>{
   
  
    // Enter the valid username 
-   await page.locator('//*[@formcontrolname="username"]').fill("chandan");
+   await page.locator('//*[@formcontrolname="username"]').fill("avi");
    await page.waitForTimeout(500);
  
  
    // Enter the valid password
-   await page.locator('//*[@id="mat-input-1"]').fill('Avinash!124421');
+   await page.locator('//*[@id="mat-input-1"]').fill('Avi!124421');
    await page.waitForTimeout(500);
 
     // Tap the login button
@@ -49,7 +49,7 @@ test('open the app and go for the valuation screen', async({page}) =>{
   await page.waitForTimeout(500);
 
   // click the proceed button and start valuation
-  await page.locator('//*[@id="ValuationTable"]/tbody/tr[1]/td[6]/mat-icon').click();
+  await page.click("['*[@id=EN-2425-PN-00905']]");
   await page.waitForTimeout(500);
 
   //click on the edit card 

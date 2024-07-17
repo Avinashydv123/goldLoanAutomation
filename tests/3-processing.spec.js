@@ -12,7 +12,7 @@ test('Go to the OE dashboard and open the loan processing form', async({page}) =
   
   
     // Enter the valid password
-    await page.locator('//*[@id="mat-input-1"]').fill('Avinash!124421');
+    await page.locator('//*[@id="mat-input-1"]').fill('Avi!124421');
     await page.waitForTimeout(500);
  
      // Tap the login button
@@ -46,15 +46,13 @@ test('Go to the OE dashboard and open the loan processing form', async({page}) =
  
    //Identify the hearders
    await expect(page).toHaveTitle('Gold Loan - Operational Executive');
-   
    await page.waitForTimeout(500);
- 
-   // select the particular customer
-   await page.locator("//td[normalize-space()='avi Js ydv' ]").click();
-   await page.waitForTimeout(4000);
-   //click on the proceed button (eye_icon )
-   await page.locator('//*[@id="app"]/app-pages/mat-drawer-container/mat-drawer-content/div/app-operational-executive/div/div[2]/table/tbody/tr[4]/td[12]/button/mat-icon').click();
-   await page.waitForTimeout(5000);
+
+   // click on eye button and start of loan processing
+   await page.click("[id=V-2425-PN-00187]");
+   await page.waitForTimeout(3000);
+
+  // await page.locator('//*[@id="app"]/app-pages/mat-drawer-container/mat-drawer-content/div/app-operational-executive/div/div[2]/table/tbody/tr[4]/td[12]/button/mat-icon').click();
  
    // //scroll down page by using mouse
    // await page.mouse.down(1000, 100);
@@ -64,6 +62,10 @@ test('Go to the OE dashboard and open the loan processing form', async({page}) =
    // //click on submit button with empty detail
    // await page.locator('//*[@id="app"]/app-pages/mat-drawer-container/mat-drawer-content/div/app-operational-executive/div/div/app-loanprocessingform/as-split/as-split-area[1]/as-split/as-split-area/div[2]/div/div[7]/div[3]/button').click();
    // await page.waitForTimeout(500);
+
+   // Add scheme by clicking on add button
+   await page.click('//*[@id="app"]/app-pages/mat-drawer-container/mat-drawer-content/div/app-operational-executive/div/div/app-loanprocessingform/as-split/as-split-area[1]/as-split/as-split-area/div[2]/div/button');
+   await page.waitForTimeout(1000);
  
    //create a new customer clicking on the add new cusotmer button and open the customer form
    
