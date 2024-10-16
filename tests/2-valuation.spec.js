@@ -1,4 +1,5 @@
 const {test, execPath, expect} = require('@playwright/test');
+const { TestContext } = require('node:test');
 test('open the app and go for the valuation screen', async({page}) =>{
 
    // Open the application by using browser
@@ -48,9 +49,65 @@ test('open the app and go for the valuation screen', async({page}) =>{
   await expect(page).toHaveTitle('Gold Loan - Valuation');
   await page.waitForTimeout(500);
 
-  // click the proceed button and start valuation
-  await page.click("['*[@id=EN-2425-PN-00905']]");
+  //refresh the page
+  await page.locator('//*[@id="app"]/app-pages/mat-drawer-container/mat-drawer-content/div/app-goldvaluation/div/div/div[1]/div/div/button/span[3]').click();
   await page.waitForTimeout(500);
+
+  //select particular customer
+// // qhudo code 
+
+
+  //select particular customer
+
+  const selectRow = await page.$$('//*[@id="ValuationTable"]/tbody')
+  await page.waitForTimeout(5000);
+
+  for(let valuationList of selectRow){
+    const customerName = await valuationList.textContent();
+
+     const string ='EN-2425-PN-01726  avinash jiwadhan yadav  Retail  Pending for valuation  16-Oct-2024 | 10:27 AM remove_red_eye EN-2425-PN-01727  maharaja jeweller  Express  Pending for valuation  16-Oct-2024 | 10:28 AM remove_red_eye EN-2425-PN-01728  maharaja jeweller  Express  Pending for valuation  16-Oct-2024 | 10:28 AM remove_red_eye'
+
+//  const arr['EN-2425-PN-01726 ', 'EN-2425-PN-01727', 'EN-2425-PN-01727']
+
+    console.log("customerName => ", typeof customerName);
+    if(customerName.toStringstring){
+      await valuationList.click();
+      
+
+    }
+    // await customerName.nth(1).click();
+
+  //   const listItems = await page.$$('//*[@id="ValuationTable"]/tbody');
+
+  //   // Iterate through each list item and click it
+  // for (let i = 0; i < listItems.length; i++) {
+  //   console.log(`Clicking on item ${i + 1}`);
+
+  //   // Re-fetch the item in each iteration to handle any potential DOM changes
+  //   const items = await page.$(`.list-item:nth-child(${i + 1})`);
+
+  //   if (items) {
+  //     await items.click();
+  //     console.log(`Clicked on item ${i + 1}`);
+  //   } else {
+  //     console.warn(`Item ${i + 1} not found.`);
+  //   }
+  // }
+
+   }
+   const rowt = page.locator('#ValuationTable .mat-mdc-row')
+   const rowCount = await rowt.count();
+   console.log("rowCount => ", rowCount)
+
+  // Locate the second row (index 1) of the table body
+  const row = page.locator('#ValuationTable .mat-mdc-row').nth(rowCount - 1);
+
+  // Within the second row, locate the "Position" cell (2nd column)
+  const positionCell = row.locator('td').nth(5);
+
+  // Click on the "Position" cell
+  await positionCell.click();
+
 
   //click on the edit card 
   await page.locator('//*[@id="app"]/app-pages/mat-drawer-container/mat-drawer-content/div/app-goldvaluation/section/app-itemlistcomponent/div/div[3]/div[2]/div/div/div[1]/div[2]/button[2]').click();
@@ -59,7 +116,6 @@ test('open the app and go for the valuation screen', async({page}) =>{
   //select purity from purity list
   await page.locator('//*[@formcontrolname="purityId"]').click();
   await page.waitForTimeout(500);
-
 
   const percent = await page.$$("//div[@role='listbox']//span")
   await page.waitForTimeout(500);
@@ -73,7 +129,8 @@ test('open the app and go for the valuation screen', async({page}) =>{
   {
     await purityList.click();
     await page.waitForTimeout(500);
-  }}
+  }
+}
   
   // click and select Acid checkbox
   await page.locator('//*[@formcontrolname="kasoti"]').click();
@@ -145,7 +202,8 @@ test('open the app and go for the valuation screen', async({page}) =>{
    {
      await purityList.click();
      await page.waitForTimeout(500);
-   }}
+   }
+  }
 
     // click and select Acid checkbox
   await page.locator('//*[@formcontrolname="kasoti"]').click();
@@ -173,5 +231,5 @@ test('open the app and go for the valuation screen', async({page}) =>{
    await page.locator('//*[@id="cdk-accordion-child-2"]/div/div[5]/button[2]').click();
    await page.waitForTimeout(5000);
 
-})
-
+}
+)
