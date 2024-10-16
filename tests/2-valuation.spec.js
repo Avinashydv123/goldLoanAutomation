@@ -7,12 +7,12 @@ test('open the app and go for the valuation screen', async({page}) =>{
   
  
    // Enter the valid username 
-   await page.locator('//*[@formcontrolname="username"]').fill("avi");
+   await page.locator('//*[@formcontrolname="username"]').fill("KaireeAdmin");
    await page.waitForTimeout(500);
  
  
    // Enter the valid password
-   await page.locator('//*[@id="mat-input-1"]').fill('Avi@12345');
+   await page.locator('//*[@id="mat-input-1"]').fill('Admin@123');
    await page.waitForTimeout(500);
 
     // Tap the login button

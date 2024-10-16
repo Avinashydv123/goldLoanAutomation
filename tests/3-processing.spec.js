@@ -7,12 +7,12 @@ test('Go to the OE dashboard and open the loan processing form', async({page}) =
     
   
     // Enter the valid username 
-    await page.locator('//*[@formcontrolname="username"]').fill("avi");
+    await page.locator('//*[@formcontrolname="username"]').fill("KaireeAdmin");
     await page.waitForTimeout(500);
   
   
     // Enter the valid password
-    await page.locator('//*[@id="mat-input-1"]').fill('Avi!124421');
+    await page.locator('//*[@id="mat-input-1"]').fill('Admin@123');
     await page.waitForTimeout(500);
  
      // Tap the login button
